@@ -18,11 +18,11 @@ async function installDart(version: string, arch: string, channel: string): Prom
   } else {
     const dartZip = await tc.downloadTool(getDartUrl(version, arch, channel));
     const dartSdkDir = await tc.extractZip(dartZip);
-    core.debug(`dart-sdk extracted to ${dartSdkDir}`);
+    core.warn(`dart-sdk extracted to ${dartSdkDir}`);
     toolPath = await tc.cacheDir(dartSdkDir, 'Dart', version, arch);
   }
 
-  let binDir = path.join(toolPath, "dart-sdk", "bin");
+  let binDir = path.join(toolPath, "bin");
   core.addPath(binDir);
 }
 
