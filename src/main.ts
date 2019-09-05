@@ -14,11 +14,12 @@ async function installDart(version: string, arch: string, channel: string): Prom
   let toolPath = tc.find('Dart', version);
 
   if (toolPath) {
-    core.debug(`Tool found in cache ${toolPath}`);
+    core.info(`Tool found in cache ${toolPath}`);
   } else {
     const dartZip = await tc.downloadTool(getDartUrl(version, arch, channel));
-    const dartSdkDir = await tc.extractZip(dartZip);
-    core.warn(`dart-sdk extracted to ${dartSdkDir}`);
+    const unzippedDir = await tc.extractZip(dartZip);
+    core.info(`dart-sdk extracted to ${unzippedDir}`);
+    const dartSdkDir = path.join(unzippedDir, 'dart-sdk');
     toolPath = await tc.cacheDir(dartSdkDir, 'Dart', version, arch);
   }
 
