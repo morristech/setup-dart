@@ -1,10 +1,10 @@
-name: 'Node 12 Template Action'
-description: 'Get started with Node actions'
-author: 'GitHub'
+name: 'setup-dart'
+description: 'GitHub Action that sets up the Dart SDK in a CI VM.'
+author: 'Renato Athaydes'
 inputs:
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  dart-version:
+    description: 'Dart SDK Version'
+    default: '2.4.1'
 runs:
   using: 'node12'
   main: 'lib/main.js'
