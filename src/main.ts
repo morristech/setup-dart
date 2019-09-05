@@ -10,7 +10,7 @@ function getDartUrl(version: string, arch: string, channel: string): string {
   return `https://storage.googleapis.com/dart-archive/channels/${channel}/release/${version}/sdk/dartsdk-${platform}-${arch}-release.zip`;
 }
 
-async function installDart(version: string, arch: string, channel: string): Promise<void> {
+async function installDart(version: string, arch: string, channel: string) {
   let toolPath: string; //tc.find('Dart', version);
 
   //if (toolPath) {
@@ -32,7 +32,7 @@ async function run() {
     const version = core.getInput('dart-version');
     const arch = core.getInput('architecture');
     const channel = core.getInput('dart-channel');
-    installDart(version, arch, channel);
+    await installDart(version, arch, channel);
   } catch (error) {
     core.setFailed(error.message);
   }
