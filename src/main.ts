@@ -11,17 +11,17 @@ function getDartUrl(version: string, arch: string, channel: string): string {
 }
 
 async function installDart(version: string, arch: string, channel: string): Promise<void> {
-  let toolPath = tc.find('Dart', version);
+  let toolPath: string; //tc.find('Dart', version);
 
-  if (toolPath) {
-    core.info(`Tool found in cache ${toolPath}`);
-  } else {
+  //if (toolPath) {
+  //  core.info(`Tool found in cache ${toolPath}`);
+  //} else {
     const dartZip = await tc.downloadTool(getDartUrl(version, arch, channel));
     const unzippedDir = await tc.extractZip(dartZip);
     core.info(`dart-sdk extracted to ${unzippedDir}`);
     const dartSdkDir = path.join(unzippedDir, 'dart-sdk');
-    toolPath = await tc.cacheDir(dartSdkDir, 'Dart', version, arch);
-  }
+    toolPath = dartSdkDir;// await tc.cacheDir(dartSdkDir, 'Dart', version, arch);
+  //}
 
   let binDir = path.join(toolPath, "bin");
   core.addPath(binDir);
