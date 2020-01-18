@@ -1,3 +1,8 @@
+.*
+_*
+!.github
+!.gitignore
+
 __tests__/runner/*
 
 # Rest pulled from https://github.com/github/gitignore/blob/master/Node.gitignore

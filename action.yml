@@ -4,13 +4,16 @@ author: 'Renato Athaydes'
 inputs:
   dart-version:
     description: 'Dart SDK Version'
-    default: '2.4.1'
+    default: 'latest'
+    required: false
   dart-channel:
     description: 'Dart release channel (dev, stable)'
     default: 'stable'
+    required: false
   architecture:
     description: 'The architecture of the VM running the job'
     default: 'x64'
+    required: false
 runs:
   using: 'node12'
   main: 'lib/main.js'
